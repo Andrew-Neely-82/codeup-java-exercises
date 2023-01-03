@@ -39,9 +39,17 @@ public class ConsoleExercises {
     // do you capture all the words?
     // Rewrite the above example using the nextLine method.
 
-    System.out.print("Enter a sentence: ");
-    String sentence2 = scanner.nextLine();
-    System.out.println("You entered: " + sentence2);
+    // System.out.print("Enter a sentence: ");
+    // String sentence2 = scanner.nextLine();
+    // System.out.println("You entered: " + sentence2);
+
+    System.out.printf("Let's find the area of the room. What is the length? %n");
+    int length = Integer.parseInt(scanner.nextLine());
+    System.out.printf("What is the width? %n");
+    int width = Integer.parseInt(scanner.nextLine());
+    int area = width * length;
+    int perimeter = (width * 2) + (length * 2);
+    System.out.printf("The area of the room is %d square feet and the perimeter seems to be %d ", area, perimeter);
 
   }
 }
