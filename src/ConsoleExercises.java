@@ -50,6 +50,6 @@ public class ConsoleExercises {
     int area = width * length;
     int perimeter = (width * 2) + (length * 2);
     System.out.printf("The area of the room is %d square feet and the perimeter seems to be %d ", area, perimeter);
-
+    scanner.close();
   }
 }
