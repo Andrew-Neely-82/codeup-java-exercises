@@ -1,13 +1,14 @@
 package shapes;
 
 public class ShapesTest {
-
   public static void main(String[] args) {
-    Rectangle box1 = new Rectangle(2, 5);
-    System.out.println("box1.getPerimeter() = " + box1.getPerimeter());
-    System.out.println("box1.getArea() = " + box1.getArea());
-    Square box2 = new Square(5);
-    System.out.println("box2.getPerimeter() = " + box2.getPerimeter());
-    System.out.println("box2.getArea() = " + box2.getArea());
+
+    Measurable rectangle = new Rectangle(5,4);
+    System.out.println("Perimeter for rectangle: " + rectangle.getPerimeter());
+    System.out.println("Area for rectangle: " + rectangle.getArea());
+
+    Measurable square = new Square(5);
+    System.out.println("Perimeter for square: " + square.getPerimeter());
+    System.out.println("Area for square: " + square.getArea());
   }
 }
