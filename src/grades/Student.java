@@ -22,12 +22,12 @@ public class Student {
   public double getGradeAverage() {
     double sum = 0;
     for (double grade : grades) {
-        sum += grade;
+      sum += grade;
     }
     double average = sum / grades.size();
-    if(Double.isNaN(average)) {
-        return 0;
+    if (Double.isNaN(average)) {
+      return 0;
     }
     return average;
-}
+  }
 }
