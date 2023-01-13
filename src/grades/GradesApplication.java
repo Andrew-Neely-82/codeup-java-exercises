@@ -11,7 +11,6 @@ public class GradesApplication {
   public static final String INPUT_MESSAGE = "What student would you like to see more information on?";
   public static final String NOT_FOUND_MESSAGE = "Sorry, no student found with the GitHub username of \"%s\".";
   public static final String STUDENT_INFORMATION_MESSAGE = "Name: %s - GitHub Username: %s\n\nCurrent Average: %.2f";
-
   public static final String CONTINUE_MESSAGE = "Would you like to see another student?";
   public static final String YES_OPTION = "yes";
   public static final String[] OPTIONS = { "BillyLAMP", "BootstrapBob", "JqueryJack", "JavaJill" };
