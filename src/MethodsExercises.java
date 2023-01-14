@@ -23,14 +23,15 @@ public class MethodsExercises {
   }
 
   public static int getInteger(int min, int max) {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter a number between 1 and 10: ");
-    int userInput = scanner.nextInt();
-    if (userInput < min || userInput > max) {
-      System.out.println("Invalid input. Enter a number between 1 and 10");
-      return getInteger(min, max);
+    try (Scanner scanner = new Scanner(System.in)) {
+      System.out.print("Enter a number between 1 and 10: ");
+      int userInput = scanner.nextInt();
+      if (userInput < min || userInput > max) {
+        System.out.println("Invalid input. Enter a number between 1 and 10");
+        return getInteger(min, max);
+      }
+      return userInput;
     }
-    return userInput;
   }
 
   // Calculate the factorial of a number.
@@ -51,24 +52,25 @@ public class MethodsExercises {
   // 4! = 1 x 2 x 3 x 4 = 24
 
   public static long factorial() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter a number between 1 and 10: ");
-    int userInput = scanner.nextInt();
-    long factorial = 1;
-    if (userInput < 1 || userInput > 10) {
-      System.out.println("Invalid input. Enter a number between 1 and 10");
-      return factorial();
+    try (Scanner scanner = new Scanner(System.in)) {
+      System.out.print("Enter a number between 1 and 10: ");
+      int userInput = scanner.nextInt();
+      long factorial = 1;
+      if (userInput < 1 || userInput > 10) {
+        System.out.println("Invalid input. Enter a number between 1 and 10");
+        return factorial();
+      }
+      for (int i = 1; i <= userInput; i++) {
+        factorial *= i;
+      }
+      System.out.println("The factorial of " + userInput + " is " + factorial);
+      System.out.print("Do you want to continue? [y/n] ");
+      String userContinue = scanner.next();
+      if (userContinue.equalsIgnoreCase("y")) {
+        return factorial();
+      }
+      return factorial;
     }
-    for (int i = 1; i <= userInput; i++) {
-      factorial *= i;
-    }
-    System.out.println("The factorial of " + userInput + " is " + factorial);
-    System.out.print("Do you want to continue? [y/n] ");
-    String userContinue = scanner.next();
-    if (userContinue.equalsIgnoreCase("y")) {
-      return factorial();
-    }
-    return factorial;
   }
 
   // Create an application that simulates dice rolling.
@@ -83,19 +85,20 @@ public class MethodsExercises {
   // numbers.
 
   public static int rollDice() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter the number of sides for a pair of dice: ");
-    int userInput = scanner.nextInt();
-    int dice1 = (int) (Math.random() * userInput) + 1;
-    int dice2 = (int) (Math.random() * userInput) + 1;
-    System.out.println("Dice 1: " + dice1);
-    System.out.println("Dice 2: " + dice2);
-    System.out.print("Do you want to roll the dice again? [y/n] ");
-    String userContinue = scanner.next();
-    if (userContinue.equalsIgnoreCase("y")) {
-      return rollDice();
+    try (Scanner scanner = new Scanner(System.in)) {
+      System.out.print("Enter the number of sides for a pair of dice: ");
+      int userInput = scanner.nextInt();
+      int dice1 = (int) (Math.random() * userInput) + 1;
+      int dice2 = (int) (Math.random() * userInput) + 1;
+      System.out.println("Dice 1: " + dice1);
+      System.out.println("Dice 2: " + dice2);
+      System.out.print("Do you want to roll the dice again? [y/n] ");
+      String userContinue = scanner.next();
+      if (userContinue.equalsIgnoreCase("y")) {
+        return rollDice();
+      }
+      return dice1 + dice2;
     }
-    return dice1 + dice2;
   }
 
   // Game Development 101
@@ -115,24 +118,25 @@ public class MethodsExercises {
   // If a user guesses the number, the game should declare "GOOD GUESS!"
 
   public static void highLow() {
-    Scanner scanner = new Scanner(System.in);
-    int randomNumber = (int) (Math.random() * 100) + 1;
-    System.out.print("Guess a number between 1 and 100: ");
-    int userInput = scanner.nextInt();
-    if (userInput < 1 || userInput > 100) {
-      System.out.println("Invalid input. Enter a number between 1 and 100");
-      highLow();
-    }
-    if (userInput < randomNumber) {
-      System.out.println("HIGHER");
-      highLow();
-    }
-    if (userInput > randomNumber) {
-      System.out.println("LOWER");
-      highLow();
-    }
-    if (userInput == randomNumber) {
-      System.out.println("GOOD GUESS!");
+    try (Scanner scanner = new Scanner(System.in)) {
+      int randomNumber = (int) (Math.random() * 100) + 1;
+      System.out.print("Guess a number between 1 and 100: ");
+      int userInput = scanner.nextInt();
+      if (userInput < 1 || userInput > 100) {
+        System.out.println("Invalid input. Enter a number between 1 and 100");
+        highLow();
+      }
+      if (userInput < randomNumber) {
+        System.out.println("HIGHER");
+        highLow();
+      }
+      if (userInput > randomNumber) {
+        System.out.println("LOWER");
+        highLow();
+      }
+      if (userInput == randomNumber) {
+        System.out.println("GOOD GUESS!");
+      }
     }
   }
 
