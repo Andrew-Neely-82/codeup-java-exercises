@@ -45,23 +45,18 @@ public class GradesApplication {
     student4.addGrade(80.6);
     student4.addGrade(70.3);
 
-    JOptionPane.showMessageDialog(null, WELCOME_MESSAGE + "\n\n" + GITHUB_USERNAMES_MESSAGE, WELCOME_MESSAGE,
-        JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, WELCOME_MESSAGE + "\n\n" + GITHUB_USERNAMES_MESSAGE, WELCOME_MESSAGE, JOptionPane.INFORMATION_MESSAGE);
     while (true) {
-      String userInput = (String) JOptionPane.showInputDialog(null, INPUT_MESSAGE, "Students",
-          JOptionPane.QUESTION_MESSAGE, null, OPTIONS, OPTIONS[0]);
+      String userInput = (String) JOptionPane.showInputDialog(null, INPUT_MESSAGE, "Students", JOptionPane.QUESTION_MESSAGE, null, OPTIONS, OPTIONS[0]);
       if (students.containsKey(userInput)) {
         Student student = students.get(userInput);
-        String studentInformation = String.format("Name: " + students.get(userInput).getName() + " - GitHub Username: "
-            + userInput + "\n\nCurrent Average: %.2f", students.get(userInput).getGradeAverage());
-        JOptionPane.showMessageDialog(null, studentInformation, student.getName() + "'s Information",
-            JOptionPane.INFORMATION_MESSAGE);
+        String studentInformation = String.format("Name: " + students.get(userInput).getName() + " - GitHub Username: " + userInput + "\n\nCurrent Average: %.2f", students.get(userInput).getGradeAverage());
+        JOptionPane.showMessageDialog(null, studentInformation, student.getName() + "'s Information", JOptionPane.INFORMATION_MESSAGE);
       } else {
         String notFoundMessage = String.format(NOT_FOUND_MESSAGE, userInput);
         JOptionPane.showMessageDialog(null, notFoundMessage);
       }
-      String userContinue = JOptionPane.showInputDialog(null, CONTINUE_MESSAGE, "Continue?",
-          JOptionPane.QUESTION_MESSAGE, null, new String[] { "Yes", "No" }, "Yes").toString();
+      String userContinue = JOptionPane.showInputDialog(null, CONTINUE_MESSAGE, "Continue?", JOptionPane.QUESTION_MESSAGE, null, new String[] { "Yes", "No" }, "Yes").toString();
       if (!YES_OPTION.equalsIgnoreCase(userContinue)) {
         JOptionPane.showMessageDialog(null, GOODBYE, "Goodbye!", JOptionPane.INFORMATION_MESSAGE);
         break;

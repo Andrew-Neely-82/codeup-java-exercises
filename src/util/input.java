@@ -25,17 +25,21 @@ public class input {
   // int getInt(int min, int max)
 
   public static int getInt(int min, int max) {
-    // keep prompting the user for input until they give an integer within the min
-    // and max.
-    System.out.println("Enter a number between " + min + " and " + max);
-    int num = scanner.nextInt();
-    if (num >= min && num <= max) {
-      return num;
-    } else {
-      System.out.println("Invalid number");
-      return getInt(min, max);
+    while (true) {
+        System.out.println("Enter a number between " + min + " and " + max);
+        try {
+            String input = scanner.nextLine();
+            int num = Integer.valueOf(input);
+            if (num >= min && num <= max) {
+                return num;
+            } else {
+                System.out.println("Invalid number, please enter a number between " + min + " and " + max);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input, please enter a valid integer value.");
+        }
     }
-  }
+}
 
   // int getInt()
 
@@ -47,13 +51,19 @@ public class input {
   // double getDouble(double min, double max)
 
   public static double getDouble(double min, double max) {
-    System.out.println("Enter a number between " + min + " and " + max);
-    double num = scanner.nextDouble();
-    if (num >= min && num <= max) {
-      return num;
-    } else {
-      System.out.println("Invalid number");
-      return getDouble(min, max);
+    while (true) {
+      System.out.println("Enter a number between " + min + " and " + max);
+      try {
+        String input = scanner.nextLine();
+        double num = Double.valueOf(input);
+        if (num >= min && num <= max) {
+          return num;
+        } else {
+          System.out.println("Invalid number, please enter a number between " + min + " and " + max);
+        }
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input, please enter a valid double value.");
+      }
     }
   }
 
