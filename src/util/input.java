@@ -26,20 +26,20 @@ public class input {
 
   public static int getInt(int min, int max) {
     while (true) {
-        System.out.println("Enter a number between " + min + " and " + max);
-        try {
-            String input = scanner.nextLine();
-            int num = Integer.valueOf(input);
-            if (num >= min && num <= max) {
-                return num;
-            } else {
-                System.out.println("Invalid number, please enter a number between " + min + " and " + max);
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input, please enter a valid integer value.");
+      System.out.println("Enter a number between " + min + " and " + max);
+      try {
+        String input = scanner.nextLine();
+        int num = Integer.valueOf(input);
+        if (num >= min && num <= max) {
+          return num;
+        } else {
+          System.out.println("Invalid number, please enter a number between " + min + " and " + max);
         }
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input, please enter a valid integer value.");
+      }
     }
-}
+  }
 
   // int getInt()
 
