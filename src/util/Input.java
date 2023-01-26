@@ -1,92 +1,103 @@
 package util;
 
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Input {
+  private Scanner scanner;
 
-  private static Scanner scanner = new Scanner(System.in);
-
-  public static String getString() {
-    System.out.println("Enter a string: ");
-    String string = scanner.nextLine();
-    return string;
+  public Input() {
+    this.scanner = new Scanner(System.in);
   }
 
-  // The yesNo method should return true if the user enters y, yes, or variants
-  // thereof, and false otherwise.
-  public static boolean yesNo() {
-    System.out.println(" Enter Y or N ");
-    String answer = scanner.nextLine().toLowerCase();
-    return Objects.equals(answer, "y") || Objects.equals(answer, "yes");
-
+  public String getString(String prompt) {
+    if (prompt != null) {
+      System.out.print(prompt);
+    }
+    return this.scanner.nextLine();
   }
 
-  // int getInt(int min, int max)
+  public boolean yesNo(String prompt) {
+    String userInput = getString(prompt).toLowerCase();
+    return userInput.equals("y") || userInput.equals("yes");
+  }
 
-  public static int getInt(int min, int max) {
-    while (true) {
-      System.out.println("Enter a number between " + min + " and " + max);
+  public int getInt(String prompt, int min, int max) {
+    int userInt = 0;
+    boolean isValid = false;
+    while (!isValid) {
       try {
-        String input = scanner.nextLine();
-        int num = Integer.valueOf(input);
-        if (num >= min && num <= max) {
-          return num;
+        userInt = Integer.valueOf(getString(prompt));
+        if (userInt >= min && userInt <= max) {
+          isValid = true;
         } else {
-          System.out.println("Invalid number, please enter a number between " + min + " and " + max);
+          System.out.println("Invalid input. Please enter an integer between " + min + " and " + max);
         }
       } catch (NumberFormatException e) {
-        System.out.println("Invalid input, please enter a valid integer value.");
+        System.out.println("Invalid input. Please enter an integer.");
+      }
+    }
+    return userInt;
+  }
+
+  public int getInt(String prompt) {
+    int userInt = 0;
+    boolean isValid = false;
+    while (!isValid) {
+      try {
+        userInt = Integer.valueOf(getString(prompt));
+        isValid = true;
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter an integer.");
+      }
+    }
+    return userInt;
+  }
+
+  public double getDouble(String prompt, double min, double max) {
+    while (true) {
+      try {
+        System.out.println(prompt);
+        double userDouble = Double.valueOf(scanner.nextLine());
+        if (userDouble >= min && userDouble <= max) {
+          return userDouble;
+        } else {
+          System.out.println("Number out of range. Please enter a number between " + min + " and " + max);
+        }
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter a valid decimal number.");
       }
     }
   }
 
-  // int getInt()
-
-  public static int getInt(int num) {
-    System.out.println("Enter a number: ");
-    return num;
-  }
-
-  // double getDouble(double min, double max)
-
-  public static double getDouble(double min, double max) {
+  public int getBinary(String prompt) {
     while (true) {
-      System.out.println("Enter a number between " + min + " and " + max);
       try {
-        String input = scanner.nextLine();
-        double num = Double.valueOf(input);
-        if (num >= min && num <= max) {
-          return num;
-        } else {
-          System.out.println("Invalid number, please enter a number between " + min + " and " + max);
+        String userInput = getString(prompt);
+        if (!userInput.matches("[01]+")) {
+          System.out.println("Invalid input. Please enter a valid binary number.");
+          continue;
         }
+        int value = Integer.parseInt(userInput, 2);
+        return value;
       } catch (NumberFormatException e) {
-        System.out.println("Invalid input, please enter a valid double value.");
+        System.out.println("Invalid input. Please enter a valid binary number.");
       }
     }
   }
 
-  // double getDouble()
-
-  public static double getDouble(double num) {
-    return num;
+  public int getHex(String prompt) {
+    while (true) {
+      try {
+        String userInput = getString(prompt);
+        if (!userInput.matches("[0-9A-Fa-f]+")) {
+            System.out.println("Invalid input. Please enter a valid hexadecimal number.");
+            continue;
+        }
+        int value = Integer.parseInt(userInput, 16);
+        return value;
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter a valid hexadecimal number.");
+      }
+    }
   }
-
-  // The getInt(int min, int max) method should keep prompting the user for input
-  // until they give an integer within the min and max. The getDouble method
-  // should do the same thing, but with decimal numbers.
-
-  // Create another class named InputTest that has a static main method that uses
-  // all the methods from the Input class.
-
-  public static void main(String[] args) {
-    getString();
-    System.out.println(yesNo());
-    getInt(1, 10);
-    getInt(1);
-    getDouble(1.0, 10.0);
-    getDouble(1.0);
-  }
-
 }
