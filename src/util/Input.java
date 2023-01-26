@@ -3,7 +3,7 @@ package util;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class input {
+public class Input {
 
   private static Scanner scanner = new Scanner(System.in);
 

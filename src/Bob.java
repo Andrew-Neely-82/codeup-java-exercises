@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class bob {
+public class Bob {
   public static void main(String[] args) {
 
     // Bob is a lackadaisical teenager. In conversation, his responses are very
